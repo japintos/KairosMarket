@@ -13,7 +13,9 @@
     "reset-admin": "node database/reset-admin-password.js",
     "check-admin": "node database/check-admin-password.js",
     "seed-dashboard": "node database/seed-dashboard.js",
-    "setup": "npm run create-db && npm run migrate && npm run seed"
+    "optimizar-db": "node scripts/optimizar-db.js",
+    "setup": "npm run create-db && npm run migrate && npm run seed",
+    "setup-completo": "npm run create-db && npm run migrate && npm run seed && npm run optimizar-db"
   },
   "keywords": [
     "api",

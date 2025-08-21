@@ -137,21 +137,9 @@ router.get('/', asyncHandler(async (req, res) => {
   const orderBy = allowedOrders.includes(orden) ? orden : 'nombre';
   const orderDirection = allowedDirections.includes(direccion.toUpperCase()) ? direccion.toUpperCase() : 'ASC';
 
-  // Obtener total de productos
-  const [countResult] = await executeQuery(
-    `SELECT COUNT(*) as total 
-     FROM productos p 
-     LEFT JOIN categorias c ON p.categoria_id = c.id 
-     ${whereClause}`,
-    queryParams
-  );
-
-  const total = countResult.total;
-  const totalPages = Math.ceil(total / limitNum);
-
-  // Obtener productos
+  // Obtener productos con SQL_CALC_FOUND_ROWS (optimización)
   const products = await executeQuery(
-    `SELECT p.*, c.nombre as categoria_nombre 
+    `SELECT SQL_CALC_FOUND_ROWS p.*, c.nombre as categoria_nombre 
      FROM productos p 
      LEFT JOIN categorias c ON p.categoria_id = c.id 
      ${whereClause} 
@@ -159,6 +147,11 @@ router.get('/', asyncHandler(async (req, res) => {
      LIMIT ? OFFSET ?`,
     [...queryParams, limitNum, offset]
   );
+
+  // Obtener total usando FOUND_ROWS() (más eficiente)
+  const [countResult] = await executeQuery('SELECT FOUND_ROWS() as total');
+  const total = countResult.total;
+  const totalPages = Math.ceil(total / limitNum);
 
   // Procesar formato_disponible JSON
   products.forEach(product => {

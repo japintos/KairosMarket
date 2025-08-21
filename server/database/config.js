@@ -8,7 +8,7 @@ const mysql = require('mysql2/promise');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
-// Configuración de la base de datos
+// Configuración de la base de datos optimizada
 const dbConfig = {
   host: 'localhost',
   user: 'root',
@@ -16,15 +16,38 @@ const dbConfig = {
   database: 'kairos_natural_market',
   port: 3306,
   waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+  connectionLimit: 20,           // Aumentado de 10 a 20
+  queueLimit: 5,                 // Limitado para evitar sobrecarga
+  acquireTimeout: 60000,         // 60 segundos para adquirir conexión
+  timeout: 60000,                // 60 segundos timeout
+  reconnect: true,               // Reconexión automática
   charset: 'utf8mb4',
-  // ✅ CONFIGURACIÓN MÁS SIMPLE POSIBLE
-  ssl: false
+  ssl: false,
+  // Nuevas optimizaciones
+  multipleStatements: false,     // Seguridad
+  dateStrings: true,             // Optimización de fechas
+  supportBigNumbers: true,       // Soporte para números grandes
+  bigNumberStrings: true,        // Números grandes como strings
+  // Configuración de pool avanzada
+  enableKeepAlive: true,         // Mantener conexiones vivas
+  keepAliveInitialDelay: 0,      // Inicio inmediato del keep-alive
 };
 
-// Crear pool de conexiones
+// Crear pool de conexiones optimizado
 const pool = mysql.createPool(dbConfig);
+
+// Monitoreo del pool para optimización
+pool.on('connection', (connection) => {
+  console.log('🔗 Nueva conexión establecida');
+});
+
+pool.on('acquire', (connection) => {
+  console.log('📥 Conexión adquirida del pool');
+});
+
+pool.on('release', (connection) => {
+  console.log('📤 Conexión liberada al pool');
+});
 
 // Función para probar la conexión
 const testConnection = async () => {

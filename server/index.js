@@ -33,6 +33,7 @@ const contactRoutes = require('./routes/contact');
 // Importar middleware
 const { errorHandler } = require('./middleware/errorHandler');
 const { authMiddleware } = require('./middleware/auth');
+const { performanceMiddleware, poolMonitoringMiddleware } = require('./middleware/performance');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -63,9 +64,23 @@ app.use(helmet({
   }
 }));
 
-app.use(compression());
+// Configuración de compresión optimizada
+app.use(compression({
+  level: 6,                    // Nivel de compresión (0-9)
+  threshold: 1024,             // Comprimir respuestas > 1KB
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) {
+      return false;
+    }
+    return compression.filter(req, res);
+  }
+}));
 app.use(morgan('combined'));
 app.use(limiter);
+
+// Middleware de performance y monitoreo
+app.use(performanceMiddleware);
+app.use(poolMonitoringMiddleware);
 
 // Configuración de CORS
 app.use(cors({
