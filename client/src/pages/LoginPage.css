@@ -1,0 +1,187 @@
+/**
+ * Estilos para la página de Login
+ * Kairos Natural Market - Desarrollado por Julio Alberto Pintos - WebXpert
+ * Año: 2025
+ */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-background-accent) 0%, var(--color-background-secondary) 100%);
+  padding: var(--spacing-md);
+}
+
+.login-container {
+  background: var(--color-background-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: var(--spacing-3xl);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-header {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.login-logo img {
+  height: 40px;
+  width: auto;
+  border-radius: var(--border-radius-md);
+}
+
+.login-logo h1 {
+  font-size: var(--font-size-lg);
+  margin: 0;
+  font-family: var(--font-family-serif);
+}
+
+.login-header h2 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-2xl);
+}
+
+.login-header p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.login-form {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+  text-align: left;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.form-label svg {
+  color: var(--color-primary);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(230, 124, 48, 0.1);
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: var(--spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-gray-500);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  transition: color var(--transition-fast);
+}
+
+.password-toggle:hover {
+  color: var(--color-primary);
+}
+
+.btn-large {
+  width: 100%;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+
+.login-footer {
+  border-top: 1px solid var(--color-gray-200);
+  padding-top: var(--spacing-lg);
+}
+
+.login-footer p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+.link-primary {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.link-primary:hover {
+  color: var(--color-secondary);
+}
+
+.link-secondary {
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast);
+}
+
+.link-secondary:hover {
+  color: var(--color-text-primary);
+}
+
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-lg);
+  font-weight: 500;
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: var(--color-danger);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-container {
+    padding: var(--spacing-xl);
+  }
+  
+  .login-logo h1 {
+    font-size: var(--font-size-base);
+  }
+  
+  .login-header h2 {
+    font-size: var(--font-size-xl);
+  }
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#4C6B3C" />
+    <meta name="description" content="Kairos Natural Market - Productos naturales fraccionados. Hierbas medicinales, especias, frutos secos y más. Envío a domicilio." />
+    <meta name="keywords" content="productos naturales, hierbas medicinales, especias, frutos secos, té, mate, orgánico, saludable, Kairos Natural Market" />
+    <meta name="author" content="Julio Alberto Pintos - WebXpert" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kairosnatural.com/" />
+    <meta property="og:title" content="Kairos Natural Market - Productos Naturales" />
+    <meta property="og:description" content="Descubre nuestra selección de productos naturales fraccionados. Hierbas medicinales, especias, frutos secos y más." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://kairosnatural.com/" />
+    <meta property="twitter:title" content="Kairos Natural Market - Productos Naturales" />
+    <meta property="twitter:description" content="Descubre nuestra selección de productos naturales fraccionados. Hierbas medicinales, especias, frutos secos y más." />
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://sdk.mercadopago.com">
+    <link rel="preconnect" href="https://api.mercadopago.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MercadoPago SDK -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>Kairos Natural Market - Productos Naturales Fraccionados</title>
+
+    <style>
+
+      /* Estilos base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Lato', sans-serif;
+        line-height: 1.6;
+        color: #2E2E2E;
+        background-color: #E5E5E5;
+      }
+
+      /* Variables CSS para colores */
+      :root {
+        --primary-orange: #E67C30;
+        --primary-green: #4C6B3C;
+        --secondary-green: #A3C586;
+        --background-gray: #E5E5E5;
+        --white: #FFFFFF;
+        --soft-black: #2E2E2E;
+        --text-gray: #666666;
+        --border-gray: #DDDDDD;
+        --success-green: #28a745;
+        --warning-orange: #ffc107;
+        --danger-red: #dc3545;
+        --info-blue: #17a2b8;
+      }
+
+      /* Estilos de scrollbar personalizada */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary-green);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary-green);
+      }
+
+      /* Estilos para focus */
+      *:focus {
+        outline: 2px solid var(--primary-orange);
+        outline-offset: 2px;
+      }
+
+      /* Estilos para botones */
+      button {
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+      }
+
+      /* Estilos para enlaces */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Estilos para imágenes */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Estilos para formularios */
+      input, textarea, select {
+        font-family: inherit;
+        border: 1px solid var(--border-gray);
+        border-radius: 4px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+
+      input:focus, textarea:focus, select:focus {
+        border-color: var(--primary-orange);
+        box-shadow: 0 0 0 2px rgba(230, 124, 48, 0.2);
+      }
+
+      /* Estilos para botones */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-orange);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: #d46928;
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        background-color: var(--primary-green);
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background-color: #3d5a2f;
+        transform: translateY(-1px);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: var(--primary-orange);
+        border: 2px solid var(--primary-orange);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary-orange);
+        color: white;
+      }
+
+      /* Estilos para contenedores */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Estilos para grid */
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      /* Estilos para flexbox */
+      .flex {
+        display: flex;
+      }
+
+      .flex-center {
+        justify-content: center;
+        align-items: center;
+      }
+
+      .flex-between {
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .flex-column {
+        flex-direction: column;
+      }
+
+      /* Estilos para espaciado */
+      .mt-1 { margin-top: 8px; }
+      .mt-2 { margin-top: 16px; }
+      .mt-3 { margin-top: 24px; }
+      .mt-4 { margin-top: 32px; }
+      .mt-5 { margin-top: 40px; }
+
+      .mb-1 { margin-bottom: 8px; }
+      .mb-2 { margin-bottom: 16px; }
+      .mb-3 { margin-bottom: 24px; }
+      .mb-4 { margin-bottom: 32px; }
+      .mb-5 { margin-bottom: 40px; }
+
+      .p-1 { padding: 8px; }
+      .p-2 { padding: 16px; }
+      .p-3 { padding: 24px; }
+      .p-4 { padding: 32px; }
+      .p-5 { padding: 40px; }
+
+      /* Estilos para texto */
+      .text-center { text-align: center; }
+      .text-left { text-align: left; }
+      .text-right { text-align: right; }
+
+      .text-sm { font-size: 14px; }
+      .text-base { font-size: 16px; }
+      .text-lg { font-size: 18px; }
+      .text-xl { font-size: 20px; }
+      .text-2xl { font-size: 24px; }
+      .text-3xl { font-size: 30px; }
+
+      .font-light { font-weight: 300; }
+      .font-normal { font-weight: 400; }
+      .font-medium { font-weight: 500; }
+      .font-semibold { font-weight: 600; }
+      .font-bold { font-weight: 700; }
+
+      /* Estilos para colores de texto */
+      .text-primary { color: var(--primary-orange); }
+      .text-secondary { color: var(--primary-green); }
+      .text-gray { color: var(--text-gray); }
+      .text-white { color: white; }
+
+      /* Estilos para fondos */
+      .bg-primary { background-color: var(--primary-orange); }
+      .bg-secondary { background-color: var(--primary-green); }
+      .bg-light { background-color: var(--background-gray); }
+      .bg-white { background-color: white; }
+
+      /* Estilos para bordes */
+      .border { border: 1px solid var(--border-gray); }
+      .border-radius { border-radius: 6px; }
+      .border-radius-lg { border-radius: 12px; }
+
+      /* Estilos para sombras */
+      .shadow { box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+      .shadow-lg { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+      .shadow-xl { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
+
+      /* Estilos para responsive */
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+
+        .text-3xl { font-size: 24px; }
+        .text-2xl { font-size: 20px; }
+        .text-xl { font-size: 18px; }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 10px;
+        }
+
+        .btn {
+          padding: 10px 20px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>Necesitas habilitar JavaScript para ejecutar esta aplicación.</noscript>
+    
+
+
+    <div id="root"></div>
+
+    <script>
+      // Configuración de MercadoPago
+      window.MP_PUBLIC_KEY = 'TEST-00000000-0000-0000-0000-000000000000';
+    </script>
+  </body>
+</html>

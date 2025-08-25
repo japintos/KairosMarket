@@ -1,0 +1,430 @@
+/**
+ * Estilos para el layout administrativo - AdminLayout.css
+ * Kairos Natural Market - Desarrollado por Julio Alberto Pintos - WebXpert
+ * Año: 2025
+ */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 320px;
+  background: linear-gradient(180deg, var(--color-neutral-800) 0%, var(--color-neutral-700) 100%);
+  color: var(--color-text-inverse);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000;
+  transform: translateX(-320px);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.admin-sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.sidebar-header {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.logo span {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text-inverse);
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.close-sidebar {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--color-text-inverse);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-sidebar:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.close-sidebar:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 1.5rem 0;
+  overflow-y: auto;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin: 0.5rem 1rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.nav-link:hover {
+  color: white;
+  transform: translateX(8px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link:hover::before {
+  opacity: 0.1;
+}
+
+.nav-link:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  color: white;
+  box-shadow: 0 4px 15px rgba(230, 124, 48, 0.4);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: white;
+  border-radius: 2px 0 0 2px;
+}
+
+.nav-icon {
+  font-size: 1.3rem;
+  width: 24px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.1);
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.nav-label {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.nav-description {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 0.25rem;
+  line-height: 1.3;
+}
+
+.sidebar-footer {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--color-error), #dc2626);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  min-height: 48px;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.logout-btn:focus {
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* Main Content */
+.admin-main {
+  flex: 1;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left var(--transition-base);
+}
+
+/* Cuando sidebar esté abierto */
+.admin-sidebar.open + .admin-main {
+  margin-left: 320px;
+}
+
+@media (max-width: 1024px) {
+  .admin-sidebar.open + .admin-main {
+    margin-left: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar.open + .admin-main {
+    margin-left: 0;
+  }
+}
+
+.admin-header {
+  background: var(--color-bg-header);
+  border-bottom: 1px solid var(--color-border-header);
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.menu-toggle {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(230, 124, 48, 0.3);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(230, 124, 48, 0.4);
+}
+
+.menu-toggle:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  transform: scale(1.05);
+}
+
+.breadcrumb {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-neutral-800);
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.admin-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-800);
+}
+
+.admin-role {
+  font-size: 0.85rem;
+  color: var(--color-neutral-600);
+  background: rgba(230, 124, 48, 0.15);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .admin-sidebar {
+    width: 280px;
+    transform: translateX(-280px);
+  }
+  
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+  
+  .admin-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .header-left {
+    gap: 1rem;
+  }
+  
+  .breadcrumb {
+    font-size: 1.1rem;
+  }
+  
+  .admin-info {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .menu-toggle {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .breadcrumb {
+    font-size: 1rem;
+  }
+}

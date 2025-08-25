@@ -1,0 +1,291 @@
+/**
+ * Estilos para la página de login del panel administrativo - AdminLoginPage.css
+ * Kairos Natural Market - Desarrollado por Julio Alberto Pintos - WebXpert
+ * Año: 2025
+ */
+
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagen de fondo removida para evitar errores de compilación */
+.admin-login-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(230, 124, 48, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.login-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 450px;
+}
+
+.login-card {
+  background: var(--color-bg-tertiary);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2.5rem;
+  border: 1px solid var(--color-border-secondary);
+  backdrop-filter: blur(10px);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(230, 124, 48, 0.2);
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.login-header h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.login-header p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--color-text-tertiary);
+  font-size: 1.1rem;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: all 0.3s ease;
+  min-height: 48px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(230, 124, 48, 0.1);
+  background: var(--color-bg-primary);
+}
+
+.form-group input:focus + .input-icon {
+  color: var(--color-primary-500);
+}
+
+.form-group input::placeholder {
+  color: var(--color-text-tertiary);
+  opacity: 0.7;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle:hover {
+  color: var(--color-primary-500);
+  background: rgba(230, 124, 48, 0.1);
+}
+
+.password-toggle:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  color: var(--color-primary-500);
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 1rem;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(230, 124, 48, 0.3);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.login-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-secondary-600));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 124, 48, 0.4);
+}
+
+.login-btn:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-secondary-600));
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-btn:disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(230, 124, 48, 0.3);
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-login-page {
+    padding: 1rem;
+  }
+  
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .logo h1 {
+    font-size: 1.25rem;
+  }
+  
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .form-group input {
+    padding: 0.875rem 0.875rem 0.875rem 2.75rem;
+    font-size: 0.95rem;
+  }
+  
+  .input-icon {
+    left: 0.875rem;
+    font-size: 1rem;
+  }
+  
+  .password-toggle {
+    right: 0.875rem;
+  }
+}

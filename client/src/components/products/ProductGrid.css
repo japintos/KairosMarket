@@ -1,0 +1,309 @@
+/**
+ * Estilos para el componente ProductGrid
+ * Kairos Natural Market - Desarrollado por Julio Alberto Pintos - WebXpert
+ * Año: 2025
+ */
+
+.product-grid {
+  width: 100%;
+}
+
+.product-grid-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+}
+
+/* Layouts específicos */
+.product-grid-grid {
+  /* Layout por defecto - ya definido arriba */
+  gap: 2rem;
+}
+
+.product-grid-list {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.product-grid-compact {
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: 1.5rem;
+}
+
+/* Estados de carga y error */
+.product-grid-loading,
+.product-grid-error,
+.product-grid-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: var(--spacing-3xl);
+}
+
+.product-grid-error {
+  flex-direction: column;
+  text-align: center;
+}
+
+.product-grid-error .alert {
+  max-width: 500px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .product-grid-container {
+    grid-template-columns: repeat(var(--grid-columns-tablet), 1fr);
+    gap: 1.5rem;
+  }
+  
+  .product-grid-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid-container {
+    grid-template-columns: repeat(var(--grid-columns-mobile), 1fr);
+    gap: 1.25rem;
+  }
+  
+  .product-grid-grid {
+    gap: 1.25rem;
+  }
+  
+  .product-grid-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .product-grid-compact {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .product-grid-grid {
+    gap: 1rem;
+  }
+  
+  .product-grid-compact {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .product-grid-loading,
+  .product-grid-error,
+  .product-grid-empty {
+    min-height: 300px;
+    padding: var(--spacing-xl);
+  }
+}
+
+/* Animaciones de entrada escalonadas */
+.product-grid-container .product-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.product-grid-container .product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-grid-container .product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-grid-container .product-card:nth-child(3) { animation-delay: 0.3s; }
+.product-grid-container .product-card:nth-child(4) { animation-delay: 0.4s; }
+.product-grid-container .product-card:nth-child(5) { animation-delay: 0.5s; }
+.product-grid-container .product-card:nth-child(6) { animation-delay: 0.6s; }
+.product-grid-container .product-card:nth-child(7) { animation-delay: 0.7s; }
+.product-grid-container .product-card:nth-child(8) { animation-delay: 0.8s; }
+
+/* Variantes de espaciado */
+.product-grid.spaced {
+  padding: var(--spacing-lg);
+}
+
+.product-grid.compact {
+  gap: var(--spacing-sm);
+}
+
+.product-grid.loose {
+  gap: var(--spacing-xl);
+}
+
+/* Variantes de tamaño */
+.product-grid.small .product-card {
+  font-size: 0.9em;
+}
+
+.product-grid.large .product-card {
+  font-size: 1.1em;
+}
+
+/* Efectos hover en la grilla */
+.product-grid.hover-effect .product-card:hover {
+  z-index: 1;
+}
+
+/* Grilla con filtros */
+.product-grid-with-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.product-grid-with-filters .filters-section {
+  background: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-grid-with-filters .products-section {
+  flex: 1;
+}
+
+/* Grilla con paginación */
+.product-grid-with-pagination {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.product-grid-with-pagination .pagination-section {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-lg) 0;
+}
+
+/* Grilla con ordenamiento */
+.product-grid-with-sorting {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.product-grid-with-sorting .sorting-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Grilla con vista de lista alternada */
+.product-grid-list-alternate .product-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.product-grid-list-alternate .product-card:nth-child(even) .product-image {
+  order: 2;
+}
+
+.product-grid-list-alternate .product-card:nth-child(even) .product-info {
+  order: 1;
+}
+
+@media (max-width: 768px) {
+  .product-grid-list-alternate .product-card,
+  .product-grid-list-alternate .product-card:nth-child(even) {
+    flex-direction: column;
+  }
+  
+  .product-grid-list-alternate .product-card .product-image,
+  .product-grid-list-alternate .product-card:nth-child(even) .product-image {
+    order: 1;
+  }
+  
+  .product-grid-list-alternate .product-card .product-info,
+  .product-grid-list-alternate .product-card:nth-child(even) .product-info {
+    order: 2;
+  }
+}
+
+/* Grilla con masonry (experimental) */
+.product-grid-masonry {
+  columns: var(--grid-columns);
+  column-gap: var(--spacing-lg);
+}
+
+.product-grid-masonry .product-card {
+  break-inside: avoid;
+  margin-bottom: var(--spacing-lg);
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .product-grid-masonry {
+    columns: var(--grid-columns-tablet);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid-masonry {
+    columns: var(--grid-columns-mobile);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid-masonry {
+    columns: 1;
+  }
+}
+
+/* Grilla con skeleton loading */
+.product-grid-skeleton {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+}
+
+.product-grid-skeleton .skeleton-card {
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  height: 400px;
+  position: relative;
+}
+
+.product-grid-skeleton .skeleton-image {
+  height: 200px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.product-grid-skeleton .skeleton-content {
+  padding: var(--spacing-lg);
+}
+
+.product-grid-skeleton .skeleton-line {
+  height: 12px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  margin-bottom: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+}
+
+.product-grid-skeleton .skeleton-line.short {
+  width: 60%;
+}
+
+.product-grid-skeleton .skeleton-line.medium {
+  width: 80%;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
