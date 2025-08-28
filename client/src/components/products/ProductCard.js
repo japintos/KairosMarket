@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaHeart, FaEye, FaStar } from 'react-icons/fa';
 import { useCart } from '../../hooks/useCart';
 import { useAuth } from '../../hooks/useAuth';
+import OptimizedImage from '../common/OptimizedImage';
 import './ProductCard.css';
 
 const ProductCard = ({ product, showQuickView = true }) => {
@@ -64,10 +65,12 @@ const ProductCard = ({ product, showQuickView = true }) => {
       {/* Imagen del producto */}
       <div className="product-image">
         <Link to={`/producto/${product.id}`}>
-          <img 
-            src={product.imagen_url || '/img/placeholder-product.jpg'} 
+          <OptimizedImage 
+            src={product.imagen_url}
             alt={product.nombre}
-            loading="lazy"
+            width={280}
+            height={200}
+            className="product-optimized-image"
           />
         </Link>
         
@@ -94,15 +97,17 @@ const ProductCard = ({ product, showQuickView = true }) => {
               to={`/producto/${product.id}`}
               className="action-btn quick-view-btn"
               title="Ver detalles"
+              aria-label={`Ver detalles de ${product.nombre}`}
             >
               <FaEye />
             </Link>
           )}
           
-          <button
+                    <button 
             className={`action-btn favorite-btn ${isFavorite ? 'active' : ''}`}
             onClick={handleToggleFavorite}
             title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+            aria-label={isFavorite ? `Quitar ${product.nombre} de favoritos` : `Agregar ${product.nombre} a favoritos`}
           >
             <FaHeart />
           </button>
@@ -190,6 +195,8 @@ const ProductCard = ({ product, showQuickView = true }) => {
             className={`btn btn-primary add-to-cart-btn ${isLoading ? 'loading' : ''}`}
             onClick={handleAddToCart}
             disabled={product.stock === 0 || isLoading}
+            aria-label={product.stock === 0 ? `${product.nombre} sin stock` : `Agregar ${product.nombre} al carrito`}
+            aria-describedby={`cart-description-${product.id}`}
           >
             {isLoading ? (
               <span className="loading-spinner"></span>
@@ -199,6 +206,9 @@ const ProductCard = ({ product, showQuickView = true }) => {
                 {product.stock === 0 ? 'Sin stock' : 'Agregar al carrito'}
               </>
             )}
+            <span id={`cart-description-${product.id}`} className="sr-only">
+              {product.stock === 0 ? `${product.nombre} sin stock` : `Agregar ${product.nombre} al carrito de compras`}
+            </span>
           </button>
         </div>
       </div>

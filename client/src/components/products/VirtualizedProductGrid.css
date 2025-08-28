@@ -1,0 +1,49 @@
+/**
+ * Estilos para grilla de productos virtualizada
+ * Kairos Natural Market - Desarrollado por Julio Alberto Pintos - WebXpert
+ * Año: 2025
+ */
+
+.virtualized-product-grid {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.grid-cell {
+  padding: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.virtualized-grid-loading,
+.virtualized-grid-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.virtualized-grid-loading p,
+.virtualized-grid-empty p {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .grid-cell {
+    padding: var(--space-1);
+  }
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .virtualized-grid-loading,
+  .virtualized-grid-empty {
+    padding: var(--space-6);
+  }
+}

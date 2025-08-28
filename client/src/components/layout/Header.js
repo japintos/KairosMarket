@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
 import { FaShoppingCart, FaUser, FaBars, FaTimes, FaSearch, FaHeart, FaCog } from 'react-icons/fa';
+import SearchAutocomplete from '../search/SearchAutocomplete';
 import './Header.css';
 
 const Header = () => {
@@ -79,18 +80,15 @@ const Header = () => {
         </Link>
 
         {/* Búsqueda */}
-        <form className="header-search" onSubmit={handleSearch}>
-          <input
-            type="text"
-            placeholder="Buscar productos..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="search-input"
-          />
-          <button type="submit" className="search-button">
-            <FaSearch />
-          </button>
-        </form>
+        <SearchAutocomplete
+          placeholder="Buscar productos..."
+          className="header-search"
+          onSearch={(query) => {
+            // Aquí se puede implementar la búsqueda de sugerencias
+            console.log('Búsqueda:', query);
+          }}
+          suggestions={[]} // Aquí se pueden pasar las sugerencias
+        />
 
         {/* Navegación principal */}
         <nav className={`header-nav ${isMenuOpen ? 'nav-open' : ''}`}>

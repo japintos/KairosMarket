@@ -9,9 +9,7 @@
     "create-db": "node database/create-db.js",
     "migrate": "node database/migrate.js",
     "seed": "node database/seed.js",
-    "fix-admin": "node database/fix-admin.js",
-    "reset-admin": "node database/reset-admin-password.js",
-    "check-admin": "node database/check-admin-password.js",
+
     "seed-dashboard": "node database/seed-dashboard.js",
     "optimizar-db": "node scripts/optimizar-db.js",
     "setup": "npm run create-db && npm run migrate && npm run seed",

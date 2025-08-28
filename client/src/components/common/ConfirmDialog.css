@@ -1,0 +1,264 @@
+/**
+ * Estilos para el diálogo de confirmación
+ * Kairos Natural Market - Desarrollado por Julio Alberto Pintos - WebXpert
+ * Año: 2025
+ */
+
+.confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-modal-backdrop, 10000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.confirm-dialog {
+  background: var(--color-bg-tertiary);
+  border-radius: 16px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  border: 2px solid var(--color-border-secondary);
+  overflow: hidden;
+}
+
+.confirm-header {
+  padding: 1.5rem 2rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, var(--color-bg-header), var(--color-bg-secondary));
+  border-bottom: 1px solid var(--color-border-secondary);
+  position: relative;
+}
+
+.confirm-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.confirm-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.confirm-icon.danger {
+  color: #ef4444;
+}
+
+.confirm-icon.warning {
+  color: #f59e0b;
+}
+
+.confirm-icon.success {
+  color: #10b981;
+}
+
+.confirm-icon.info {
+  color: #3b82f6;
+}
+
+.confirm-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.confirm-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-text-primary);
+  transform: scale(1.05);
+}
+
+.confirm-close:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.confirm-body {
+  padding: 1.5rem 2rem;
+}
+
+.confirm-message {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  text-align: center;
+}
+
+.confirm-actions {
+  padding: 1rem 2rem 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.confirm-btn {
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-btn {
+  background: var(--color-neutral-200);
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-border-primary);
+}
+
+.cancel-btn:hover {
+  background: var(--color-neutral-300);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cancel-btn:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  background: var(--color-neutral-300);
+}
+
+.confirm-btn-warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.confirm-btn-warning:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.confirm-btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.confirm-btn-danger:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.confirm-btn-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.confirm-btn-success:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.confirm-btn-info {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.confirm-btn-info:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.confirm-btn:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .confirm-dialog {
+    max-width: 90vw;
+    margin: 1rem;
+  }
+  
+  .confirm-header {
+    padding: 1rem 1.5rem 0.75rem;
+  }
+  
+  .confirm-body {
+    padding: 1rem 1.5rem;
+  }
+  
+  .confirm-actions {
+    padding: 0.75rem 1.5rem 1.5rem;
+    flex-direction: column;
+  }
+  
+  .confirm-btn {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirm-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .confirm-icon-container {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .confirm-icon {
+    font-size: 1.25rem;
+  }
+  
+  .confirm-title {
+    font-size: 1.1rem;
+  }
+}

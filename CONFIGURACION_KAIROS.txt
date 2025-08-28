@@ -1,0 +1,228 @@
+===============================================================================
+                    CONFIGURACIÓN KAIROS NATURAL MARKET
+===============================================================================
+
+Este archivo contiene TODA la información hardcodeada encontrada en el proyecto.
+Por favor, completa cada sección con la información real de Kairos Natural Market.
+
+===============================================================================
+                            INFORMACIÓN DE CONTACTO
+===============================================================================
+
+📧 EMAILS:
+- Email de contacto general: info@kairosnatural.com
+- Email de administrador: admin@kairosnatural.com
+- Email de ventas: [COMPLETAR]
+- Email de soporte: [COMPLETAR]
+
+📞 TELÉFONOS:
+- Teléfono principal: +54 9 11 1234-5678
+- WhatsApp: +54 9 11 1234-5678
+- Teléfono alternativo: [COMPLETAR]
+
+📍 DIRECCIÓN:
+- Dirección actual: "Av. Principal 123, Ciudad Autónoma de Buenos Aires"
+- Dirección real: [COMPLETAR]
+- Código postal: [COMPLETAR]
+- Ciudad: [COMPLETAR]
+- Provincia: [COMPLETAR]
+
+🕒 HORARIOS DE ATENCIÓN:
+- Horarios actuales: "Lunes a Viernes: 9:00 - 18:00 | Sábados: 9:00 - 14:00"
+- Horarios reales: [COMPLETAR]
+- Días especiales: [COMPLETAR]
+- Feriados: [COMPLETAR]
+
+===============================================================================
+                            REDES SOCIALES
+===============================================================================
+
+📱 REDES SOCIALES:
+- Facebook: https://facebook.com/kairosnatural
+- Instagram: https://instagram.com/kairosnatural
+- Twitter/X: [COMPLETAR]
+- TikTok: [COMPLETAR]
+- YouTube: [COMPLETAR]
+- LinkedIn: [COMPLETAR]
+
+===============================================================================
+                            INFORMACIÓN DE LA EMPRESA
+===============================================================================
+
+🏢 DATOS DE LA EMPRESA:
+- Nombre de la empresa: "Kairos Natural Market"
+- Nombre legal: [COMPLETAR]
+- CUIT/CUIL: [COMPLETAR]
+- Tipo de empresa: [COMPLETAR]
+- Año de fundación: [COMPLETAR]
+
+📋 DESCRIPCIÓN:
+- Descripción actual: "Productos Naturales Fraccionados"
+- Descripción real: [COMPLETAR]
+- Misión: [COMPLETAR]
+- Visión: [COMPLETAR]
+- Valores: [COMPLETAR]
+
+===============================================================================
+                            CONFIGURACIÓN DE PAGOS
+===============================================================================
+
+💳 MERCADOPAGO:
+- Access Token (Desarrollo): TEST-1234567890abcdef-1234-5678-90ab-cdef12345678
+- Public Key (Desarrollo): TEST-12345678-1234-1234-1234-123456789012
+- Access Token (Producción): [COMPLETAR]
+- Public Key (Producción): [COMPLETAR]
+- Webhook URL: [COMPLETAR]
+
+💰 CONFIGURACIÓN DE ENVÍOS:
+- Costo base de envío: $500
+- Umbral de envío gratis: $5000
+- Zonas de envío: [COMPLETAR]
+- Tiempos de entrega: [COMPLETAR]
+
+===============================================================================
+                            CONFIGURACIÓN DE EMAIL
+===============================================================================
+
+📧 CONFIGURACIÓN SMTP:
+- Host SMTP: smtp.gmail.com
+- Puerto: 587
+- Usuario: [COMPLETAR]
+- Contraseña: [COMPLETAR]
+- Email remitente: [COMPLETAR]
+
+===============================================================================
+                            CONFIGURACIÓN DE WHATSAPP
+===============================================================================
+
+📱 WHATSAPP BUSINESS:
+- API Key: [COMPLETAR]
+- Número de teléfono: [COMPLETAR]
+- Mensaje de bienvenida: [COMPLETAR]
+
+===============================================================================
+                            INFORMACIÓN DE SEGURIDAD
+===============================================================================
+
+🔐 CONFIGURACIÓN DE SEGURIDAD:
+- JWT Secret: [COMPLETAR - mínimo 32 caracteres]
+- Bcrypt Rounds: 10
+- Rate Limit: 100 requests por 15 minutos
+
+===============================================================================
+                            INFORMACIÓN DE BASE DE DATOS
+===============================================================================
+
+🗄️ BASE DE DATOS:
+- Nombre de la BD: kairos_natural_market
+- Host: localhost
+- Puerto: 3306
+- Usuario: [COMPLETAR]
+- Contraseña: [COMPLETAR]
+
+===============================================================================
+                            INFORMACIÓN DE DOMINIO
+===============================================================================
+
+🌐 DOMINIO Y HOSTING:
+- Dominio principal: [COMPLETAR]
+- Subdominio admin: [COMPLETAR]
+- Certificado SSL: [COMPLETAR]
+- Hosting provider: [COMPLETAR]
+
+===============================================================================
+                            INFORMACIÓN LEGAL
+===============================================================================
+
+⚖️ INFORMACIÓN LEGAL:
+- Política de privacidad: [COMPLETAR]
+- Términos y condiciones: [COMPLETAR]
+- Política de devoluciones: [COMPLETAR]
+- Política de envíos: [COMPLETAR]
+- Información fiscal: [COMPLETAR]
+
+===============================================================================
+                            INFORMACIÓN DE PRODUCTOS
+===============================================================================
+
+📦 CATEGORÍAS DE PRODUCTOS:
+- Categorías actuales: [REVISAR Y COMPLETAR]
+- Productos destacados: [COMPLETAR]
+- Productos nuevos: [COMPLETAR]
+- Ofertas especiales: [COMPLETAR]
+
+===============================================================================
+                            INFORMACIÓN DE CLIENTES
+===============================================================================
+
+👥 INFORMACIÓN DE CLIENTES:
+- Cliente de prueba: admin@kairosnatural.com
+- Contraseña de prueba: admin123
+- Datos de contacto de prueba: [REVISAR]
+
+===============================================================================
+                            ARCHIVOS Y MEDIA
+===============================================================================
+
+🖼️ ARCHIVOS:
+- Logo principal: /img/logo1.jpg
+- Logo alternativo: /img/logo-kairos.png
+- Favicon: [COMPLETAR]
+- Imágenes de productos: [COMPLETAR]
+- Videos promocionales: [COMPLETAR]
+
+===============================================================================
+                            INFORMACIÓN DE DESARROLLO
+===============================================================================
+
+👨‍💻 DESARROLLO:
+- Desarrollador: Julio Alberto Pintos - WebXpert
+- Año: 2025
+- Versión: 1.0.0
+- Tecnologías: React, Node.js, MySQL
+
+===============================================================================
+                            NOTAS IMPORTANTES
+===============================================================================
+
+⚠️ NOTAS:
+1. Reemplaza TODOS los valores [COMPLETAR] con la información real
+2. Verifica que los emails y teléfonos sean correctos
+3. Actualiza las redes sociales con los enlaces reales
+4. Configura correctamente MercadoPago para producción
+5. Revisa y actualiza la información legal
+6. Verifica que los horarios sean precisos
+7. Actualiza la dirección con la ubicación real
+8. Configura el dominio y hosting correctamente
+
+===============================================================================
+                            ARCHIVOS A MODIFICAR
+===============================================================================
+
+📁 ARCHIVOS PRINCIPALES A ACTUALIZAR:
+1. server/.env
+2. client/src/components/layout/Footer.js
+3. client/src/pages/ContactPage.js
+4. client/src/pages/admin/AdminSettingsPage.js
+5. server/database/migrate.js
+6. server/database/fix-admin.js
+7. server/database/reset-admin-password.js
+8. client/src/components/layout/Header.js
+9. client/src/pages/admin/AdminLoginPage.js
+10. client/src/App.js
+
+===============================================================================
+                            PRÓXIMOS PASOS
+===============================================================================
+
+✅ PASOS PARA ACTUALIZAR:
+1. Completa toda la información en este archivo
+2. Actualiza el archivo server/.env con la configuración real
+3. Ejecuta los scripts de migración de base de datos
+4. Actualiza los archivos del frontend con la información correcta
+5. Prueba todas las funcionalidades
+6. Configura el dominio y SSL
+7. Configura MercadoPago para producción
+8. Realiza pruebas de pago y envío
+
+===============================================================================

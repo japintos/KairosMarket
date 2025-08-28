@@ -10,8 +10,9 @@ import toast from 'react-hot-toast';
 
 // Hook para obtener productos
 export const useProducts = (params = {}) => {
+  const queryKey = ['products', JSON.stringify(params)];
   return useQuery({
-    queryKey: ['products', params],
+    queryKey,
     queryFn: () => productService.getProducts(params),
     staleTime: 5 * 60 * 1000, // 5 minutos
     gcTime: 10 * 60 * 1000, // 10 minutos (cacheTime cambió a gcTime en v5)

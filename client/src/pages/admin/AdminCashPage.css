@@ -358,27 +358,143 @@
   font-size: 1.1rem;
 }
 
-/* Modal Styles - Usando sistema unificado */
-/* Los estilos de modales ahora están en modal-system.css */
+/* ===== ESTILOS ESPECÍFICOS DEL MODAL DE CAJA ===== */
+
+/* Botones de tipo de transacción */
+.transaction-type-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.type-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--color-border-primary);
+  border-radius: 8px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 48px;
+}
 
 .type-btn:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-500);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .type-btn.active {
-  border-color: var(--primary-color);
-  background: var(--primary-color);
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-500);
   color: white;
+  box-shadow: 0 4px 12px rgba(230, 124, 48, 0.3);
 }
 
+.type-btn svg {
+  font-size: 1rem;
+}
+
+/* Formulario específico del modal de caja */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.modal-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-form .form-group label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-form .form-group input,
+.modal-form .form-group textarea {
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--color-border-primary);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  min-height: 48px;
+}
+
+.modal-form .form-group input:focus,
+.modal-form .form-group textarea:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(230, 124, 48, 0.1);
+  outline: none;
+  background: var(--color-bg-tertiary);
+}
+
+.modal-form .form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+/* Acciones del modal */
 .modal-actions {
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
+  border-top: 2px solid var(--color-border-secondary);
+}
+
+/* Mejoras de accesibilidad para el modal */
+.modal-content {
+  max-width: 500px;
+  width: 100%;
+}
+
+.modal-form .form-group {
+  position: relative;
+}
+
+.modal-form .form-group input:invalid,
+.modal-form .form-group textarea:invalid {
+  border-color: var(--color-error-500, #ef4444);
+}
+
+.modal-form .form-group input:invalid:focus,
+.modal-form .form-group textarea:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Mejoras visuales para los botones */
+.modal-actions .btn-primary,
+.modal-actions .btn-secondary {
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.modal-actions .btn-primary:hover,
+.modal-actions .btn-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary {
@@ -479,6 +595,31 @@
 
   .transaction-type-buttons {
     flex-direction: column;
+  }
+
+  .type-btn {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+  }
+
+  .modal-form .form-group input,
+  .modal-form .form-group textarea {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+  }
+
+  .modal-form .form-group textarea {
+    min-height: 60px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn-primary,
+  .modal-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
   }
 }
 

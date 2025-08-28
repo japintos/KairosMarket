@@ -1,344 +1,440 @@
 # 🌿 Kairos Natural Market
 
-**Tienda online de productos naturales fraccionados** - Desarrollado por Julio Alberto Pintos - WebXpert
+**E-commerce de productos naturales fraccionados** - Plataforma completa con panel administrativo, sistema de pagos y gestión integral.
 
-## 📋 Descripción
+![Kairos Natural Market](https://img.shields.io/badge/Status-Production%20Ready-green)
+![React](https://img.shields.io/badge/React-18.2.0-blue)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green)
+![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange)
+![MercadoPago](https://img.shields.io/badge/MercadoPago-Integrated-yellow)
 
-Kairos Natural Market es una plataforma de e-commerce completa para la venta de productos naturales fraccionados. Incluye hierbas medicinales, especias, frutos secos y accesorios relacionados, con un sistema de gestión administrativa completo.
+## 📋 Tabla de Contenidos
 
-## ✨ Características Principales
+- [🎯 Descripción](#-descripción)
+- [✨ Características](#-características)
+- [🏗️ Arquitectura](#️-arquitectura)
+- [🚀 Instalación](#-instalación)
+- [⚙️ Configuración](#️-configuración)
+- [📱 Uso](#-uso)
+- [🔧 Scripts Disponibles](#-scripts-disponibles)
+- [📊 Estructura del Proyecto](#-estructura-del-proyecto)
+- [🛠️ Tecnologías](#️-tecnologías)
+- [🔒 Seguridad](#-seguridad)
+- [📈 Optimizaciones](#-optimizaciones)
+- [🤝 Contribución](#-contribución)
+- [📄 Licencia](#-licencia)
 
-### 🛒 Frontend (React)
-- ✅ **Página de inicio** con hero section y productos destacados
-- ✅ **Catálogo de productos** con filtros y búsqueda avanzada
-- ✅ **Página de producto individual** con galería de imágenes
-- ✅ **Carrito de compras** funcional con persistencia local
-- ✅ **Checkout** con múltiples métodos de pago
-- ✅ **Sistema de autenticación** completo (login/registro)
-- ✅ **Panel administrativo** con todas las secciones
-- ✅ **Perfil de usuario** con gestión de datos
-- ✅ **Historial de pedidos** y favoritos
-- ✅ **Diseño responsive** optimizado para todos los dispositivos
-- ✅ **Accesibilidad WCAG 2.1 AA** implementada
+---
 
-### 🔧 Backend (Node.js + Express)
-- ✅ **API RESTful** completa con documentación
-- ✅ **Autenticación JWT** con roles (admin/vendedor)
-- ✅ **Base de datos MySQL** con 11 tablas optimizadas
-- ✅ **CRUD completo** para productos y categorías
-- ✅ **Gestión de pedidos** y clientes
-- ✅ **Sistema de pagos** con MercadoPago integrado
-- ✅ **Middleware de seguridad** (Helmet, CORS, Rate Limiting)
-- ✅ **Validación de datos** con Joi
-- ✅ **Manejo de archivos** con Multer
-- ✅ **Logs y monitoreo** de errores
+## 🎯 Descripción
 
-### 💳 Pasarela de Pagos
-- ✅ **MercadoPago** completamente integrado
-- ✅ **Webhooks** para confirmación de pagos
-- ✅ **Múltiples métodos** de pago (tarjeta, efectivo, transferencia)
-- ✅ **Gestión de reembolsos** automática
-- ✅ **Registro en caja** automático
+**Kairos Natural Market** es una plataforma e-commerce completa desarrollada para la venta de productos naturales fraccionados. El proyecto incluye un frontend moderno en React, un backend robusto en Node.js, y un panel administrativo completo para la gestión del negocio.
 
-## 🚀 Instalación y Configuración
+### 🎨 Diseño y UX
+- **Paleta de colores**: Grises profesionales con acentos naranjas
+- **Accesibilidad**: WCAG AA/AAA compliant
+- **Responsive**: Optimizado para todos los dispositivos
+- **Microinteracciones**: Animaciones suaves con Framer Motion
 
-### Prerrequisitos
-- Node.js >= 16.0.0
-- npm >= 8.0.0
-- MySQL >= 8.0
-- Git
+---
 
-### 1. Clonar el repositorio
+## ✨ Características
+
+### 🛒 **Frontend (Cliente)**
+- ✅ **Catálogo de productos** con filtros avanzados
+- ✅ **Carrito de compras** persistente
+- ✅ **Sistema de usuarios** (registro, login, perfil)
+- ✅ **Checkout integrado** con MercadoPago
+- ✅ **Búsqueda inteligente** con autocompletado
+- ✅ **Lista de favoritos** personalizada
+- ✅ **Historial de pedidos** detallado
+- ✅ **Diseño responsive** y accesible
+
+### 🏢 **Panel Administrativo**
+- ✅ **Gestión de productos** (CRUD completo)
+- ✅ **Gestión de categorías** y inventario
+- ✅ **Panel de clientes** con estadísticas
+- ✅ **Control de pedidos** y envíos
+- ✅ **Control de caja** con gráficos
+- ✅ **Reportes y analytics** en tiempo real
+- ✅ **Configuración del sitio** centralizada
+- ✅ **Gestión de contactos** y mensajes
+
+### 🔧 **Backend (Servidor)**
+- ✅ **API RESTful** completa
+- ✅ **Autenticación JWT** segura
+- ✅ **Integración MercadoPago** para pagos
+- ✅ **Base de datos MySQL** optimizada
+- ✅ **Sistema de emails** automático
+- ✅ **Validación de datos** robusta
+- ✅ **Logging y monitoreo** avanzado
+- ✅ **Rate limiting** y seguridad
+
+---
+
+## 🏗️ Arquitectura
+
+```
+kairos-natural-market/
+├── 📁 client/                 # Frontend React
+│   ├── 📁 src/
+│   │   ├── 📁 components/     # Componentes reutilizables
+│   │   ├── 📁 pages/         # Páginas de la aplicación
+│   │   ├── 📁 hooks/         # Custom hooks
+│   │   ├── 📁 contexts/      # Context API
+│   │   ├── 📁 styles/        # Estilos globales
+│   │   └── 📁 utils/         # Utilidades
+│   └── 📁 public/            # Assets públicos
+├── 📁 server/                # Backend Node.js
+│   ├── 📁 routes/           # Rutas de la API
+│   ├── 📁 middleware/       # Middlewares personalizados
+│   ├── 📁 database/         # Scripts de BD y migraciones
+│   └── 📁 scripts/          # Scripts de optimización
+└── 📁 img/                  # Imágenes del proyecto
+```
+
+---
+
+## 🚀 Instalación
+
+### **Prerrequisitos**
+- Node.js 18+ 
+- MySQL 8.0+
+- npm o yarn
+
+### **1. Clonar el repositorio**
 ```bash
 git clone https://github.com/tu-usuario/kairos-natural-market.git
 cd kairos-natural-market
 ```
 
-### 2. Instalar dependencias
+### **2. Instalar dependencias**
 ```bash
-npm run install-all
+# Instalar dependencias del cliente
+cd client
+npm install
+
+# Instalar dependencias del servidor
+cd ../server
+npm install
 ```
 
-### 3. Configurar base de datos
+### **3. Configurar base de datos**
 ```bash
-# Crear base de datos MySQL
-mysql -u root -p
-CREATE DATABASE kairos_natural_market;
-exit;
+# Crear base de datos
+npm run create-db
 
 # Ejecutar migraciones
 npm run migrate
 
-# Insertar datos de ejemplo
+# Poblar con datos de prueba
 npm run seed
 ```
 
-### 4. Configurar variables de entorno
+### **4. Configurar variables de entorno**
 ```bash
 # Copiar archivo de ejemplo
-cp server/env.example server/.env
+cp env.example .env
 
-# Editar variables de entorno
-nano server/.env
+# Editar variables en .env
+nano .env
 ```
 
-**Variables importantes a configurar:**
+### **5. Iniciar el proyecto**
+```bash
+# Terminal 1 - Backend
+cd server
+npm start
+
+# Terminal 2 - Frontend
+cd client
+npm start
+```
+
+---
+
+## ⚙️ Configuración
+
+### **Variables de Entorno (.env)**
 ```env
-# Base de datos
+# Servidor
+PORT=5000
+NODE_ENV=development
+
+# Base de Datos
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=tu_password_mysql
+DB_PASSWORD=tu_password
 DB_NAME=kairos_natural_market
+DB_PORT=3306
 
 # JWT
-JWT_SECRET=tu_jwt_secret_super_seguro_y_largo_para_produccion_minimo_32_caracteres
+JWT_SECRET=tu_jwt_secret_super_seguro_minimo_32_caracteres
+JWT_EXPIRES_IN=24h
 
-# MercadoPago (Desarrollo)
+# MercadoPago
 MP_ACCESS_TOKEN=TEST-1234567890abcdef-1234-5678-90ab-cdef12345678
 MP_PUBLIC_KEY=TEST-12345678-1234-1234-1234-123456789012
+
+# Email
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=tu_email@gmail.com
+EMAIL_PASS=tu_password_email
+
+# CORS
+CORS_ORIGIN=http://localhost:3000
 ```
 
-### 5. Ejecutar el proyecto
+### **Configuración de Base de Datos**
+El proyecto incluye scripts automatizados para:
+- Crear la base de datos
+- Ejecutar migraciones
+- Poblar con datos de prueba
+- Optimizar índices
+
+---
+
+## 📱 Uso
+
+### **Acceso a la Aplicación**
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5000
+- **Documentación API**: http://localhost:5000/api/health
+
+### **Credenciales de Administrador**
+- **Email**: admin@kairosnatural.com
+- **Contraseña**: admin123
+
+### **Funcionalidades Principales**
+
+#### **🛒 Como Cliente**
+1. **Navegar** por el catálogo de productos
+2. **Filtrar** por categorías y precios
+3. **Agregar** productos al carrito
+4. **Completar** el checkout con MercadoPago
+5. **Seguir** el estado de tus pedidos
+
+#### **🏢 Como Administrador**
+1. **Gestionar** productos y categorías
+2. **Revisar** pedidos y clientes
+3. **Monitorear** ventas y caja
+4. **Configurar** el sitio web
+5. **Generar** reportes
+
+---
+
+## 🔧 Scripts Disponibles
+
+### **Servidor (Backend)**
 ```bash
-# Desarrollo (frontend + backend)
-npm run dev
-
-# Solo frontend
-npm run client
-
-# Solo backend
-npm run server
+npm start          # Iniciar servidor en producción
+npm run dev        # Iniciar servidor en desarrollo
+npm run create-db  # Crear base de datos
+npm run migrate    # Ejecutar migraciones
+npm run seed       # Poblar con datos de prueba
+npm run setup      # Setup completo (BD + migraciones + datos)
+npm run optimizar-db # Optimizar índices de BD
 ```
 
-## 📱 URLs de Acceso
-
-### Frontend
-- **Página Principal:** http://localhost:3000
-- **Catálogo:** http://localhost:3000/catalogo
-- **Contacto:** http://localhost:3000/contacto
-- **Carrito:** http://localhost:3000/carrito
-- **Checkout:** http://localhost:3000/checkout
-
-### Panel Administrativo
-- **Login Admin:** http://localhost:3000/admin/login
-- **Dashboard:** http://localhost:3000/admin/dashboard
-- **Productos:** http://localhost:3000/admin/productos
-- **Pedidos:** http://localhost:3000/admin/pedidos
-
-### Credenciales de Prueba
-```
-Email: admin@kairosnatural.com
-Contraseña: admin123
+### **Cliente (Frontend)**
+```bash
+npm start          # Iniciar servidor de desarrollo
+npm run build      # Construir para producción
+npm test           # Ejecutar tests
+npm run eject      # Eyectar configuración (irreversible)
 ```
 
-### Backend API
-- **API Base:** http://localhost:5000/api
-- **Documentación:** http://localhost:5000/api/health
+---
 
-## 🏗️ Estructura del Proyecto
+## 📊 Estructura del Proyecto
 
+### **Frontend (React)**
 ```
-kairos-natural-market/
-├── client/                 # Frontend React
-│   ├── public/            # Archivos públicos
-│   ├── src/
-│   │   ├── components/    # Componentes reutilizables
-│   │   ├── contexts/      # Context API (Auth, Cart)
-│   │   ├── hooks/         # Custom hooks
-│   │   ├── pages/         # Páginas de la aplicación
-│   │   ├── services/      # Servicios API
-│   │   └── styles/        # Estilos CSS
-│   └── package.json
-├── server/                # Backend Node.js
-│   ├── database/          # Configuración y scripts DB
-│   ├── middleware/        # Middlewares personalizados
-│   ├── routes/            # Rutas de la API
-│   ├── uploads/           # Archivos subidos
-│   └── package.json
-├── img/                   # Imágenes del proyecto
-├── package.json           # Scripts principales
-└── README.md
+client/src/
+├── components/           # Componentes reutilizables
+│   ├── common/          # Componentes comunes
+│   ├── layout/          # Layout y navegación
+│   ├── products/        # Componentes de productos
+│   └── search/          # Componentes de búsqueda
+├── pages/               # Páginas de la aplicación
+│   ├── admin/          # Páginas del panel admin
+│   └── public/         # Páginas públicas
+├── hooks/               # Custom hooks
+├── contexts/            # Context API
+├── styles/              # Estilos globales
+└── utils/               # Utilidades
 ```
 
-## 🎨 Diseño y UX
-
-### Paleta de Colores
-```css
---color-primary: #E67C30;      /* Naranja vibrante */
---color-secondary: #2E7D32;    /* Verde oscuro */
---color-accent: #4CAF50;       /* Verde medio */
---color-accent-light: #81C784; /* Verde claro */
+### **Backend (Node.js)**
+```
+server/
+├── routes/              # Rutas de la API
+│   ├── auth.js         # Autenticación
+│   ├── products.js     # Productos
+│   ├── orders.js       # Pedidos
+│   └── admin.js        # Panel admin
+├── middleware/          # Middlewares
+├── database/           # Scripts de BD
+└── scripts/            # Scripts de optimización
 ```
 
-### Tipografía
-- **Títulos:** Playfair Display (serif)
-- **Texto:** Lato (sans-serif)
+---
 
-### Responsividad
-- ✅ Mobile-first design
-- ✅ Breakpoints optimizados
-- ✅ Experiencia consistente en todos los dispositivos
+## 🛠️ Tecnologías
+
+### **Frontend**
+- **React 18.2.0** - Biblioteca de UI
+- **React Router 6** - Enrutamiento
+- **React Query** - Gestión de estado del servidor
+- **React Hook Form** - Formularios
+- **Framer Motion** - Animaciones
+- **Chart.js** - Gráficos
+- **React Icons** - Iconografía
+- **Axios** - Cliente HTTP
+
+### **Backend**
+- **Node.js** - Runtime de JavaScript
+- **Express.js** - Framework web
+- **MySQL2** - Cliente de base de datos
+- **JWT** - Autenticación
+- **MercadoPago** - Procesamiento de pagos
+- **Nodemailer** - Envío de emails
+- **Multer** - Manejo de archivos
+- **Joi** - Validación de datos
+
+### **Base de Datos**
+- **MySQL 8.0+** - Sistema de gestión de BD
+- **Índices optimizados** para consultas rápidas
+- **Relaciones** bien definidas
+- **Integridad referencial** garantizada
+
+### **Herramientas de Desarrollo**
+- **ESLint** - Linting de código
+- **Prettier** - Formateo de código
+- **Nodemon** - Recarga automática
+- **Git** - Control de versiones
+
+---
 
 ## 🔒 Seguridad
 
-- ✅ **JWT** para autenticación
+### **Autenticación y Autorización**
+- ✅ **JWT Tokens** para sesiones seguras
+- ✅ **Bcrypt** para hash de contraseñas
+- ✅ **Rate Limiting** para prevenir ataques
 - ✅ **Helmet** para headers de seguridad
 - ✅ **CORS** configurado correctamente
-- ✅ **Rate Limiting** implementado
-- ✅ **Validación** de datos en frontend y backend
-- ✅ **Encriptación** de contraseñas con bcrypt
+
+### **Validación de Datos**
+- ✅ **Joi** para validación en backend
+- ✅ **React Hook Form** para validación en frontend
 - ✅ **Sanitización** de inputs
+- ✅ **Prevención de SQL Injection**
 
-## 📊 Base de Datos
+### **Protección de Rutas**
+- ✅ **Middleware de autenticación** para rutas protegidas
+- ✅ **Roles y permisos** implementados
+- ✅ **Validación de tokens** en cada request
 
-### Tablas Principales
-- `usuarios` - Usuarios administrativos
-- `clientes` - Clientes registrados
-- `categorias` - Categorías de productos
-- `productos` - Productos de la tienda
-- `pedidos` - Órdenes de compra
-- `detalle_pedido` - Detalles de las órdenes
-- `caja` - Transacciones financieras
-- `contactos` - Mensajes de contacto
-- `favoritos` - Productos favoritos
-- `cupones` - Cupones de descuento
-- `configuracion` - Configuración del sistema
+---
 
-## 🚀 Comandos Disponibles
+## 📈 Optimizaciones
 
-```bash
-# Instalación
-npm run install-all          # Instalar todas las dependencias
-npm run setup               # Instalación completa + migración + seed
+### **Rendimiento Frontend**
+- ✅ **Lazy Loading** de componentes
+- ✅ **Virtualización** de listas largas
+- ✅ **Optimización de imágenes** con WebP
+- ✅ **Code Splitting** automático
+- ✅ **Caching** inteligente
 
-# Desarrollo
-npm run dev                 # Frontend + Backend en desarrollo
-npm run client              # Solo frontend
-npm run server              # Solo backend
+### **Rendimiento Backend**
+- ✅ **Connection Pooling** para MySQL
+- ✅ **Compresión** de respuestas
+- ✅ **Índices optimizados** en BD
+- ✅ **Query optimization** con SQL_CALC_FOUND_ROWS
+- ✅ **Caching** de consultas frecuentes
 
-# Base de datos
-npm run migrate             # Ejecutar migraciones
-npm run seed                # Insertar datos de ejemplo
+### **Base de Datos**
+- ✅ **Índices compuestos** para consultas complejas
+- ✅ **Índices fulltext** para búsquedas
+- ✅ **Optimización de queries** con EXPLAIN
+- ✅ **Monitoreo de performance**
 
-# Producción
-npm run build               # Build del frontend
-npm start                   # Iniciar servidor de producción
-
-# Utilidades
-npm run test                # Ejecutar tests
-npm run lint                # Linting del código
-npm run clean               # Limpiar node_modules
-```
-
-## 🔧 Configuración de Producción
-
-### 1. Variables de entorno para producción
-```env
-NODE_ENV=production
-MP_ACCESS_TOKEN=APP_USR-1234567890abcdef-1234-5678-90ab-cdef12345678
-MP_PUBLIC_KEY=APP_USR-12345678-1234-1234-1234-123456789012
-MP_WEBHOOK_URL=https://tu-dominio.com/api/payments/webhook
-```
-
-### 2. Build para producción
-```bash
-npm run build
-```
-
-### 3. Configurar servidor web (Nginx/Apache)
-```nginx
-server {
-    listen 80;
-    server_name tu-dominio.com;
-    
-    location / {
-        root /path/to/kairos-natural-market/client/build;
-        try_files $uri $uri/ /index.html;
-    }
-    
-    location /api {
-        proxy_pass http://localhost:5000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
-
-## 🐛 Solución de Problemas
-
-### Error de conexión a MySQL
-```bash
-# Verificar que MySQL esté corriendo
-sudo systemctl status mysql
-
-# Verificar credenciales en .env
-DB_USER=root
-DB_PASSWORD=tu_password_mysql
-```
-
-### Error de puertos ocupados
-```bash
-# Verificar puertos en uso
-lsof -i :3000
-lsof -i :5000
-
-# Terminar procesos si es necesario
-kill -9 <PID>
-```
-
-### Error de dependencias
-```bash
-# Limpiar cache de npm
-npm cache clean --force
-
-# Reinstalar dependencias
-npm run clean
-npm run install-all
-```
-
-## 📈 Métricas de Calidad
-
-| Aspecto | Puntuación | Estado |
-|---------|------------|--------|
-| **Funcionalidad** | 100/100 | ✅ Perfecto |
-| **Responsividad** | 100/100 | ✅ Perfecto |
-| **Accesibilidad** | 95/100 | ✅ Excelente |
-| **Performance** | 90/100 | ✅ Muy Bueno |
-| **Diseño UX** | 95/100 | ✅ Excelente |
-| **Código Limpio** | 90/100 | ✅ Muy Bueno |
-| **Seguridad** | 85/100 | ✅ Bueno |
+---
 
 ## 🤝 Contribución
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+### **Cómo Contribuir**
+1. **Fork** el repositorio
+2. **Crea** una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. **Commit** tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** a la rama (`git push origin feature/AmazingFeature`)
+5. **Abre** un Pull Request
+
+### **Estándares de Código**
+- **ESLint** configurado para mantener consistencia
+- **Prettier** para formateo automático
+- **Conventional Commits** para mensajes de commit
+- **Documentación** obligatoria para nuevas funciones
+
+### **Testing**
+- **Tests unitarios** para componentes críticos
+- **Tests de integración** para APIs
+- **Tests E2E** para flujos completos
+
+---
 
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia ISC. Ver el archivo `LICENSE` para más detalles.
 
-## 👨‍💻 Autor
+---
+
+## 👨‍💻 Desarrollador
 
 **Julio Alberto Pintos - WebXpert**
-- Email: info@webxpert.com
-- LinkedIn: [Julio Alberto Pintos](https://linkedin.com/in/julio-pintos)
-- Portfolio: [WebXpert](https://webxpert.com)
-
-## 🙏 Agradecimientos
-
-- React y la comunidad de React
-- Node.js y Express.js
-- MySQL y la comunidad de bases de datos
-- MercadoPago por su API de pagos
-- Todos los contribuidores y usuarios
+- **Email**: contacto@webxpert.com
+- **LinkedIn**: [Julio Alberto Pintos](https://linkedin.com/in/julio-pintos)
+- **Portfolio**: [WebXpert](https://webxpert.com)
 
 ---
 
-**Desarrollado con ❤️ por Julio Alberto Pintos - WebXpert**  
-**Año: 2025**
+## 📞 Soporte
+
+Para soporte técnico o consultas:
+- **Email**: soporte@kairosnatural.com
+- **Documentación**: [Wiki del Proyecto](https://github.com/tu-usuario/kairos-natural-market/wiki)
+- **Issues**: [GitHub Issues](https://github.com/tu-usuario/kairos-natural-market/issues)
+
+---
+
+## 🚀 Roadmap
+
+### **Próximas Funcionalidades**
+- [ ] **App móvil** nativa (React Native)
+- [ ] **Sistema de notificaciones** push
+- [ ] **Integración con WhatsApp** Business
+- [ ] **Analytics avanzados** con Google Analytics
+- [ ] **Sistema de cupones** y descuentos
+- [ ] **Múltiples idiomas** (i18n)
+- [ ] **PWA** (Progressive Web App)
+- [ ] **API pública** para desarrolladores
+
+### **Mejoras Técnicas**
+- [ ] **Microservicios** para escalabilidad
+- [ ] **Docker** para containerización
+- [ ] **CI/CD** automatizado
+- [ ] **Monitoreo** con APM
+- [ ] **Backup automático** de BD
+- [ ] **CDN** para assets estáticos
+
+---
+
+**⭐ Si este proyecto te resulta útil, ¡déjanos una estrella en GitHub!**
+
+---
+
+*Última actualización: Enero 2025*
+*Versión: 1.0.0*
+*Estado: Production Ready*

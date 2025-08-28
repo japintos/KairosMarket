@@ -22,6 +22,10 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
+import LoadingState from '../../components/common/LoadingState';
+import ConfirmDialog from '../../components/common/ConfirmDialog';
+import { useConfirmDialog } from '../../hooks/useConfirmDialog';
+import { useModalFocus } from '../../hooks/useModalFocus';
 import toast from 'react-hot-toast';
 import './AdminProductsPage.css';
 
@@ -34,6 +38,10 @@ const AdminProductsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
+  
+  // Hooks de accesibilidad y confirmaciones
+  const { confirmDialog, showConfirmDialog, closeConfirmDialog } = useConfirmDialog();
+  const modalRef = useModalFocus(showModal);
 
   const {
     register,
@@ -181,11 +189,17 @@ const AdminProductsPage = () => {
     }
   };
 
-  // Eliminar producto
+  // Eliminar producto con confirmación mejorada
   const deleteProduct = async (productId) => {
-    if (!window.confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-      return;
-    }
+    const confirmed = await showConfirmDialog({
+      title: 'Eliminar Producto',
+      message: '¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.',
+      type: 'danger',
+      confirmText: 'Eliminar',
+      cancelText: 'Cancelar'
+    });
+
+    if (!confirmed) return;
 
     try {
       const response = await fetch(`/api/admin/products/${productId}`, {
@@ -199,7 +213,7 @@ const AdminProductsPage = () => {
         throw new Error('Error al eliminar producto');
       }
 
-      toast.success('Producto eliminado');
+      toast.success('Producto eliminado correctamente');
       loadProducts();
       
     } catch (error) {
@@ -233,7 +247,15 @@ const AdminProductsPage = () => {
     }
   };
 
-  if (loading && products.length === 0) return <LoadingSpinner />;
+  if (loading && products.length === 0) {
+    return (
+      <LoadingState 
+        message="Cargando productos..." 
+        type="loading"
+        size="large"
+      />
+    );
+  }
 
   return (
     <>
@@ -242,7 +264,7 @@ const AdminProductsPage = () => {
         <meta name="description" content="Administra los productos de Kairos Natural Market" />
       </Helmet>
 
-      <div className="admin-products-page" role="main" aria-label="Gestión de productos">
+      <div className="admin-page admin-products-page" role="main" aria-label="Gestión de productos">
         {/* Header */}
         <header className="page-header" role="banner">
           <div className="header-content">
@@ -261,7 +283,7 @@ const AdminProductsPage = () => {
         </header>
 
         {/* Filtros y búsqueda */}
-        <section className="filters-section" role="search" aria-label="Filtros de productos">
+        <section className="admin-section filters-section" role="search" aria-label="Filtros de productos">
           <div className="filters-row">
             <div className="search-box">
               <FaSearch aria-hidden="true" />
@@ -293,7 +315,7 @@ const AdminProductsPage = () => {
         </section>
 
         {/* Tabla de productos */}
-        <section className="products-section" role="region" aria-label="Lista de productos">
+        <section className="admin-section products-section" role="region" aria-label="Lista de productos">
           <div className="products-table">
             <div className="table-header" role="row">
               <div role="columnheader" aria-label="Imagen del producto">Imagen</div>
@@ -425,6 +447,11 @@ const AdminProductsPage = () => {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="modal-title"
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') {
+                    closeModal();
+                  }
+                }}
               >
                 <div className="modal-header">
                   <h2 id="modal-title">
@@ -439,7 +466,8 @@ const AdminProductsPage = () => {
                   </button>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="product-form" role="form">
+                <div className="modal-body">
+                  <form onSubmit={handleSubmit(onSubmit)} className="modal-form product-form" role="form">
                   <div className="form-grid">
                     <div className="form-group">
                       <label htmlFor="nombre">Nombre del Producto *</label>
@@ -626,10 +654,24 @@ const AdminProductsPage = () => {
                     </button>
                   </div>
                 </form>
+                </div>
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Diálogo de confirmación */}
+        <ConfirmDialog
+          isOpen={confirmDialog.isOpen}
+          title={confirmDialog.title}
+          message={confirmDialog.message}
+          type={confirmDialog.type}
+          confirmText={confirmDialog.confirmText}
+          cancelText={confirmDialog.cancelText}
+          onConfirm={confirmDialog.onConfirm}
+          onCancel={confirmDialog.onCancel}
+          onClose={closeConfirmDialog}
+        />
       </div>
     </>
   );

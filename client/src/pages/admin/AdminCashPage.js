@@ -467,12 +467,17 @@ const AdminCashPage = () => {
               >
                 <div className="modal-header">
                   <h2>Nueva Transacción</h2>
-                  <button className="btn-icon" onClick={() => setShowTransactionModal(false)}>
+                  <button 
+                    className="btn-icon" 
+                    onClick={() => setShowTransactionModal(false)}
+                    aria-label="Cerrar modal"
+                  >
                     <FaTimesCircle />
                   </button>
                 </div>
 
-                <form onSubmit={registerTransaction} className="modal-form">
+                <div className="modal-body">
+                  <form onSubmit={registerTransaction} className="modal-form">
                   <div className="form-group">
                     <label>Tipo de Transacción *</label>
                     <div className="transaction-type-buttons">
@@ -532,7 +537,8 @@ const AdminCashPage = () => {
                       <FaPlus /> Registrar Transacción
                     </button>
                   </div>
-                </form>
+                  </form>
+                </div>
               </motion.div>
             </motion.div>
           )}
